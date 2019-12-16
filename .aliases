@@ -1,0 +1,89 @@
+# MISCELANEOUS
+alias sshkey="ssh-agent && ssh-add --apple-use-keychain ~/.ssh/id_ed25519"
+alias sshkeyincontainer='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
+alias cd..="cd .."
+alias cd~="cd ~"
+alias szrc="source ~/.zshrc"
+alias sym="ln -s"
+alias tothearchives="code /Volumes/The\ Archives/1_One_Way"
+alias gtscratch="cd ~/scratch && clear"
+
+# NETWORKING
+alias dns_flush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+
+# M1 STUFF
+alias m1arch="arch -x86_64"
+
+# GIT
+alias gc="git checkout"
+alias gf="git fetch"
+alias gs="git status"
+alias gc-="gc -"
+alias gslist="git stash list"
+alias gspop="git stash pop"
+alias gstash="git stash"
+alias gstashpullpop="git add . && gstash && git pull && gspop"
+alias grc="git rebase --continue"
+alias gmain="gc main && gf && git pull && gc -"
+alias gmaster="gf && gc master && git pull && gc -"
+alias gstaging="gf && gc staging && git pull && gc -"
+alias gdevelop="gf && gc develop && git pull && gc -"
+alias gwip="git commit -m 'WIP.'"
+alias chash="git log --pretty=format:'%h' -n 1"
+alias gdifflast="git diff @~..@"
+
+# NAVIGATING & OPENING COMMON PROJECTS
+alias gtsrc="cd ~/_src"
+alias cppwd="echo $PWD | pbcopy"
+
+alias gtdotfiles="cd ~/_src/z_dotfiles/dotfiles"
+alias codedotfiles="code ~/_src/z_dotfiles/dotfiles"
+
+# Python
+alias python37="/usr/local/Cellar/python/3.7.6_1/bin/python3.7"
+
+# Android
+alias adbrev="adb reverse tcp:3001 tcp:3001 && adb reverse tcp:3030 tcp:3030 && adb reverse tcp:4000 tcp:4000 && adb reverse tcp:8001 tcp:8001"
+alias pixel4xlon29="cd /usr/local/share/android-sdk/emulator && ./emulator -avd pixel_4xl_s -dns-server 8.8.8.8"
+alias anddevmode="adb shell input keyevent 82"
+alias releaseapk="adb install ~/Downloads/app-release.apk"
+alias debugapk="adb install ~/Downloads/app-debug.apk"
+
+# iOS DEV
+alias simulator="open -a Simulator.app"
+alias clearpodscache="rm -rf '${HOME}/Library/Caches/CocoaPods'"
+
+# Local JS/TS Environments
+alias listdashgs="npm list -g --depth=0"
+alias reyarn="rm -rf node_modules && yarn"
+alias yw="yarn workspace"
+alias tswatch="clear && yarn tsc -w"
+
+alias nbc="rm ~/.babel.json"
+
+# DOCKER
+alias dc="docker-compose"
+alias d_ps="docker ps"
+alias dockerconf="cp ~/_src/notes/docker/.config.json ~/.docker/config.json"
+alias dc_down="docker-compose down"
+alias dc_up="docker-compose up -d"
+alias dc_up_output="docker-compose up"
+
+# K8S
+alias k_pods="kubectl get pods -A"
+
+# REACT NATIVE
+alias rn_podinstall="cd ios && arch -x86_64 pod install && cd .."
+alias rn_updatepods="cd ios && pod update && cd .."
+alias rn_cleanMetro="clear && yarn start --reset-cache"
+alias rn_cleanAll="clear && yarn clean"
+alias rn_cleanandroid="cd android && ./gradlew cleanBuildCache && cd .."
+alias rn_cleaniosbuilddata="rm -rf ios/build && rm -rf ~/Library/Developer/Xcode/DerivedData"
+alias rn_cleancaches="watchman watch-del-all && watchman shutdown-server && rm -rf $TMPDIR/metro-cache && yarn cache clean"
+alias rn_cleanios="watchman watch-del-all && rm -rf $TMPDIR/react-native-packager-cache-* && rm -rf $TMPDIR/metro-bundler-cache-* && rm -rf node_modules/ && yarn cache clean && yarn && rn_cleaniosbuilddata"
+alias rn_runandroid="clear && yarn android"
+alias rn_runios="clear && yarn ios"
+alias rn_runiosxsm="clear && yarn ios --simulator='iPhone XS Max'"
+alias rn_runios8="clear && yarn ios --simulator='iPhone 8'"
+alias rn_runiosX="clear && yarn ios --simulator='iPhone X'"
+alias rn_runiosse="clear && yarn ios --simulator='iPhone SE (2nd generation)'"

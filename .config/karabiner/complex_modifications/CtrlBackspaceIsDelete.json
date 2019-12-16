@@ -1,0 +1,20 @@
+{
+    "type": "basic",
+    "from": {
+        "key_code": "delete_or_backspace",
+        "modifiers": {
+            "mandatory": [
+                "control"
+            ],
+            "optional": [
+                "caps_lock",
+                "option"
+            ]
+        }
+    },
+    "to": [
+        {
+            "key_code": "delete_forward"
+        }
+    ]
+}

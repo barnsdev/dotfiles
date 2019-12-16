@@ -1,0 +1,107 @@
+
+# tap repositories and their packages
+
+tap 'homebrew/core'
+tap 'facebook/fb'
+brew 'adns'
+brew 'aom'
+brew 'apr'
+brew 'apr-util'
+brew 'aspell'
+brew 'autoconf'
+brew 'aws-iam-authenticator'
+brew 'bash'
+brew 'bash-completion'
+brew 'berkeley-db'
+brew 'brotli'
+brew 'bzip2'
+brew 'circleci'
+brew 'cocoapods'
+brew 'gdbm'
+brew 'gettext'
+brew 'gradle'
+brew 'idb-companion'
+brew 'libevent'
+brew 'libidn2'
+brew 'libunistring'
+brew 'libyaml'
+brew 'lua'
+brew 'jq'
+brew 'k6'
+brew 'm4'
+brew 'mas'
+brew 'mpdecimal'
+brew 'ncurses'
+brew 'openjdk'
+brew 'openssl@1.1'
+brew 'pcre'
+brew 'perl'
+brew 'pkg-config'
+brew 'postgres'
+brew 'pyenv'
+brew 'readline'
+brew 'ruby'
+brew 'sqlite'
+brew 'tcl-tk'
+brew 'utf8proc'
+brew 'vim'
+brew 'watchman'
+brew 'wget'
+brew 'xz'
+brew 'zsh'
+
+tap 'homebrew/bundle'
+
+tap 'homebrew/services'
+
+tap 'homebrew/cask'
+cask 'android-studio'
+cask 'anylist'
+cask 'aws-vault'
+cask 'dbeaver-community'
+cask 'firefox'
+cask 'flipper'
+cask 'gifox'
+cask 'google-chrome'
+cask 'graphql-playground'
+cask 'iterm2'
+cask 'karabiner-elements'
+cask 'menumeters'
+cask 'ngrok'
+cask 'notion'
+cask 'osxfuse'
+cask 'postman'
+cask 'react-native-debugger'
+cask 'slack'
+cask 'spotify'
+cask 'sublime-text'
+cask 'telegram'
+cask 'tower'
+cask 'vlc'
+cask 'xquartz'
+
+tap 'adoptopenjdk/openjdk'
+cask 'adoptopenjdk15'
+
+tap 'rcmdnk/file'
+brew 'brew-file'
+
+tap 'stripe/stripe-cli'
+brew 'stripe'
+
+# App Store applications
+# appstore 'Amadeus Pro (2.8.5)', id: 438292371
+# appstore 'BetterSnapTool (1.9.5)', id: 417375580
+# appstore 'DaisyDisk (4.12.1)', id: 411643860
+# appstore 'Evernote (10.12.6)', id: 406056744
+# appstore 'iMovie (10.2.3)', id: 408981434
+# appstore 'Keynote (11.0.1)', id: 409183694
+# appstore 'Kindle (1.31.0)', id: 405399194
+# appstore 'Logic Pro (10.6.2)', id: 634148309
+# appstore 'NordVPN IKE (6.3.0)', id: 1116599239
+# appstore 'Numbers (11.0)', id: 409203825
+# appstore 'Pages (11.0)', id: 409201541
+# appstore 'PasteBox (2.2.3)', id: 928940999
+# appstore 'Speedtest (1.20)', id: 1153157709
+# appstore 'The Unarchiver (4.3.3)', id: 425424353
+# appstore 'Xcode (12.5)', id: 497799835
