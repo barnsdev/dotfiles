@@ -19,11 +19,11 @@ export NVM_DIR="$HOME/.nvm"
 export WEBSTORM="webstorm --wait"
 export EDITOR="$WEBSTORM"
 
-# Python
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-PATH=$(pyenv root)/shims:$PATH
+# # Python
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
+# PATH=$(pyenv root)/shims:$PATH
 
 # Android Tools
 export ANDROID_SDK_ROOT="$(brew --prefix)/share/android-sdk"
