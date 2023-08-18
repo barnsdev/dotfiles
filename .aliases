@@ -37,7 +37,7 @@ alias gtsrc="cd ~/_src"
 alias cppwd="echo $PWD | pbcopy"
 
 alias gtdotfiles="cd ~/_src/z_dotfiles/dotfiles"
-alias codedotfiles="code ~/_src/z_dotfiles/dotfiles"
+alias codedotfiles="webstorm ~/_src/z_dotfiles/dotfiles"
 
 # Python
 alias python37="/usr/local/Cellar/python/3.7.6_1/bin/python3.7"
