@@ -1,6 +1,4 @@
 .DS_Store
 .idea
 
-.user_specific_aliases
-
-.config/karabiner/automatic_backups/
+aliases/.client_specific_aliases
