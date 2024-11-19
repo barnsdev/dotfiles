@@ -92,9 +92,12 @@ nvmrc_check() {
   fi
 }
 
+# Load git prompt script from https://github.com/lyze/posh-git-sh
+source ~/_src/z_dotfiles/dotfiles/bin/git-prompt.sh
+
 NEWLINE=$'\n'
 
 precmd() {
   nvmrc_check
-#   __posh_git_ps1 "%F{black}%K{white} /^\_/^\ =======>%F{green}%K{black} %D{%f/%m/%y}-%T - %3d/ =>" "‍${NEWLINE}  🏉  🤓  🚀  =>"
+  __posh_git_ps1 "%F{black}%K{white} /^\_/^\ =======>%F{green}%K{black} %D{%f/%m/%y}-%T - %3d/ =>" "‍${NEWLINE}  🏉  🤓  🚀  =>"
 }
