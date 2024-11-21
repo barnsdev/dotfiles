@@ -11,9 +11,6 @@ alias gtscratch="cd ~/scratch && clear"
 # NETWORKING
 alias dns_flush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
-# M1 STUFF
-alias m1arch="arch -x86_64"
-
 # GIT
 alias gc="git checkout"
 alias gf="git fetch"
@@ -38,9 +35,6 @@ alias cppwd="echo $PWD | pbcopy"
 
 alias gtdotfiles="cd ~/_src/z_dotfiles/dotfiles"
 alias codedotfiles="webstorm ~/_src/z_dotfiles/dotfiles"
-
-# Python
-alias python37="/usr/local/Cellar/python/3.7.6_1/bin/python3.7"
 
 # Android
 alias adbrev="adb reverse tcp:3001 tcp:3001 && adb reverse tcp:3030 tcp:3030 && adb reverse tcp:4000 tcp:4000 && adb reverse tcp:8001 tcp:8001"
