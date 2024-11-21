@@ -21,6 +21,9 @@ export AWS_PROFILE=59A-Dev
 # Allow aws-sdk to use aws CLI config
 export AWS_SDK_LOAD_CONFIG=true
 
+# SIGNING
+export GPG_TTY=$(tty)
+
 # DOCKER
 export d_container() {
   REGEX=$1
