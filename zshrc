@@ -4,25 +4,30 @@ plugins=(git docker docker-compose nvm)
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Load alias definitions
-[[ -s "$HOME/_src/z_dotfiles/dotfiles/aliases/.aliases" ]] && source "$HOME/_src/z_dotfiles/dotfiles/aliases/.aliases"
-[[ -s "$HOME/_src/z_dotfiles/dotfiles/aliases/.client_specific_aliases" ]] && source "$HOME/_src/z_dotfiles/dotfiles/aliases/.client_specific_aliases"
+[[ -s "$HOME/_src/z_barnsdev/dotfiles/aliases/.aliases" ]] && source "$HOME/_src/z_barnsdev/dotfiles/aliases/.aliases"
+[[ -s "$HOME/_src/z_barnsdev/dotfiles/aliases/.client_specific_aliases" ]] && source "$HOME/_src/z_barnsdev/dotfiles/aliases/.client_specific_aliases"
+
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
 # Edit Everything in WebStorm
 export WEBSTORM="webstorm --wait"
 export EDITOR="$WEBSTORM"
 
+# AWS
 export AWS_PROFILE=59A-Dev
 
 # Allow aws-sdk to use aws CLI config
 export AWS_SDK_LOAD_CONFIG=true
 
+
 # SIGNING
 export GPG_TTY=$(tty)
+
 
 # DOCKER
 export d_container() {
@@ -63,6 +68,7 @@ export d_rm_images() {
   docker rmi $(docker images --format "{{.ID}}")
 }
 
+
 # K8s
 export k_ns() {
   kubectl get pods -A | grep -m1 $1 | awk '{print $1}'
@@ -80,6 +86,7 @@ export k_logs() {
   kubectl -n `k_ns $1` logs -f `k_pod $1 $2`
 }
 
+
 nvmrc_check() {
   if [[ $PWD == $PREV_PWD ]]; then
     return
@@ -95,8 +102,9 @@ nvmrc_check() {
   fi
 }
 
+
 # Load git prompt script from https://github.com/lyze/posh-git-sh
-source ~/_src/z_dotfiles/dotfiles/bin/git-prompt.sh
+source ~/_src/z_barnsdev/dotfiles/bin/git-prompt.sh
 
 NEWLINE=$'\n'
 
@@ -105,6 +113,7 @@ precmd() {
   __posh_git_ps1 "%F{black}%K{white} /^\_/^\ =======>%F{green}%K{black} %D{%f/%m/%y}-%T - %3d/ =>" "‍${NEWLINE}  🏉  🤓  🚀  =>"
 }
 
+
 # pnpm
 export PNPM_HOME="/Users/barns/Library/pnpm"
 case ":$PATH:" in
@@ -112,3 +121,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

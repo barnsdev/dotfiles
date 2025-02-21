@@ -33,8 +33,11 @@ alias gdifflast="git diff @~..@"
 alias gtsrc="cd ~/_src"
 alias cppwd="echo $PWD | pbcopy"
 
-alias gtdotfiles="cd ~/_src/z_dotfiles/dotfiles"
-alias codedotfiles="webstorm ~/_src/z_dotfiles/dotfiles"
+alias gtdotfiles="cd ~/_src/z_barnsdev/dotfiles"
+alias codedotfiles="webstorm ~/_src/z_barnsdev/dotfiles"
+
+alias gtnotes="cd ~/_src/z_barnsdev/notes"
+alias codenotes="webstorm ~/_src/z_barnsdev/notes"
 
 # Android
 alias adbrev="adb reverse tcp:3001 tcp:3001 && adb reverse tcp:3030 tcp:3030 && adb reverse tcp:4000 tcp:4000 && adb reverse tcp:8001 tcp:8001"
