@@ -1,0 +1,15 @@
+alias gtdotfiles="cd $HOME/_src/ME/z_barnsdev/dotfiles"
+alias codedotfiles="webstorm $HOME/_src/ME/z_barnsdev/dotfiles"
+
+alias gtnotes="cd $HOME/_src/ME/z_barnsdev/notes"
+alias codenotes="webstorm $HOME/_src/ME/z_barnsdev/notes"
+
+alias methinks="obsidian vault="ME""
+
+alias gtlas="cd $HOME/_src/ME/LAS"
+
+alias gtlasbackend="cd $HOME/_src/ME/LAS/las-backend"
+alias codelasbackend="idea $HOME/_src/ME/LAS/las-backend"
+
+alias gtlasui="cd $HOME/_src/ME/LAS/las-ui"
+alias codelasui="webstorm $HOME/_src/ME/LAS/las-ui"

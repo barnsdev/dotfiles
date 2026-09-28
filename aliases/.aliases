@@ -22,9 +22,9 @@ alias gstash="git stash"
 alias gstashpullpop="git add . && gstash && git pull && gspop"
 alias grc="git rebase --continue"
 alias gmain="gc main && gf && git pull && gc -"
-alias gmaster="gf && gc master && git pull && gc -"
-alias gstaging="gf && gc staging && git pull && gc -"
+alias guat="gc uat && gf && git pull && gc -"
 alias gdevelop="gf && gc develop && git pull && gc -"
+alias gmdevelop="git merge develop"
 alias gwip="git commit -m 'WIP.'"
 alias chash="git log --pretty=format:'%h' -n 1"
 alias gdifflast="git diff @~..@"
@@ -32,12 +32,6 @@ alias gdifflast="git diff @~..@"
 # NAVIGATING & OPENING COMMON PROJECTS
 alias gtsrc="cd ~/_src"
 alias cppwd="echo $PWD | pbcopy"
-
-alias gtdotfiles="cd ~/_src/z_barnsdev/dotfiles"
-alias codedotfiles="webstorm ~/_src/z_barnsdev/dotfiles"
-
-alias gtnotes="cd ~/_src/z_barnsdev/notes"
-alias codenotes="webstorm ~/_src/z_barnsdev/notes"
 
 # Android
 alias adbrev="adb reverse tcp:3001 tcp:3001 && adb reverse tcp:3030 tcp:3030 && adb reverse tcp:4000 tcp:4000 && adb reverse tcp:8001 tcp:8001"

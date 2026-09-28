@@ -4,30 +4,45 @@ plugins=(git docker docker-compose nvm)
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Load alias definitions
-[[ -s "$HOME/_src/z_barnsdev/dotfiles/aliases/.aliases" ]] && source "$HOME/_src/z_barnsdev/dotfiles/aliases/.aliases"
-[[ -s "$HOME/_src/z_barnsdev/dotfiles/aliases/.client_specific_aliases" ]] && source "$HOME/_src/z_barnsdev/dotfiles/aliases/.client_specific_aliases"
-
+[[ -s "$HOME/_src/ME/z_barnsdev/dotfiles/aliases/.aliases" ]] && source "$HOME/_src/ME/z_barnsdev/dotfiles/aliases/.aliases"
+[[ -s "$HOME/_src/ME/z_barnsdev/dotfiles/aliases/.barns_specific_aliases" ]] && source "$HOME/_src/ME/z_barnsdev/dotfiles/aliases/.barns_specific_aliases"
+[[ -s "$HOME/_src/ME/z_barnsdev/dotfiles/aliases/.client_specific_aliases" ]] && source "$HOME/_src/ME/z_barnsdev/dotfiles/aliases/.client_specific_aliases"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
 # Edit Everything in WebStorm
-export WEBSTORM="webstorm --wait"
-export EDITOR="$WEBSTORM"
+export EDITOR="webstorm"
 
 # AWS
-export AWS_PROFILE=59A-Dev
+export aws_59A_dev() {
+    export AWS_PROFILE=59A-Dev
+}
+
+export aws_59A_prod() {
+    export AWS_PROFILE=59A-ProdReadOnly
+}
+
+export aws_las_prod() {
+    export AWS_PROFILE=LAS-Prod
+}
 
 # Allow aws-sdk to use aws CLI config
 export AWS_SDK_LOAD_CONFIG=true
 
-
 # SIGNING
 export GPG_TTY=$(tty)
 
+# DIRENV
+eval "$(direnv hook zsh)"
+
+# CLAUDE
+export CLAUDE_CONFIG_DIR="$HOME/.claude-barns"
+export claude_set_token() {
+    export CLAUDE_CODE_OAUTH_TOKEN="$(cat "$CLAUDE_CODE_OAUTH_TOKEN_PATH")"
+}
 
 # DOCKER
 export d_container() {
@@ -104,7 +119,7 @@ nvmrc_check() {
 
 
 # Load git prompt script from https://github.com/lyze/posh-git-sh
-source ~/_src/z_barnsdev/dotfiles/bin/git-prompt.sh
+source ~/_src/ME/z_barnsdev/dotfiles/bin/git-prompt.sh
 
 NEWLINE=$'\n'
 
@@ -120,7 +135,18 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
 # pnpm end
+
+# local bin
+export LOCAL_BIN="$HOME/.local/bin"
+case ":$PATH:" in
+  *":$LOCAL_BIN:"*) ;;
+  *) export PATH="$LOCAL_BIN:$PATH" ;;
+esac
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$HOME/_src"
+
+die() { echo "warp-inspect: denied: $*" >&2; exit 2; }
+
+# Only allow a small set of read-only commands
+cmd="${1:-}"
+[[ -n "$cmd" ]] || die "no command provided"
+shift || true
+
+case "$cmd" in
+  pwd|ls|cat|head|tail|rg|grep|find|git) ;;
+  *) die "command '$cmd' not allowlisted" ;;
+esac
+
+# Enforce current working directory is under ROOT
+cwd="$(pwd -P)"
+[[ "$cwd" == "$ROOT"* ]] || die "cwd '$cwd' is outside '$ROOT'"
+
+# For commands that can take path arguments, ensure any provided paths resolve under ROOT.
+# NOTE: rg/grep/find/git can still read outside via flags; this is a *basic* guard.
+realpath_compat() {
+  python3 - <<'PY' "$1" 2>/dev/null || perl -MCwd=abs_path -e 'print abs_path($ARGV[0])' "$1"
+import os,sys
+print(os.path.realpath(sys.argv[1]))
+PY
+}
+
+check_path_arg() {
+  local arg="$1"
+  # skip obvious non-path args (very conservative)
+  [[ "$arg" == "-"* ]] && return 0
+
+  local candidate="$arg"
+  if [[ "$candidate" != /* ]]; then
+    candidate="$cwd/$candidate"
+  fi
+
+  local rp
+  rp="$(realpath_compat "$candidate")" || die "cannot resolve path '$arg'"
+  [[ "$rp" == "$ROOT"* ]] || die "path '$rp' is outside '$ROOT'"
+}
+
+case "$cmd" in
+  cat|head|tail|ls)
+    for a in "$@"; do check_path_arg "$a"; done
+    ;;
+  find)
+    # if user passes an explicit start dir, validate it
+    if [[ "${1:-}" != "" && "${1:-}" != "-"* ]]; then check_path_arg "$1"; fi
+    ;;
+  git)
+    # Allow only read-only git subcommands, optionally preceded by --no-pager
+    first="${1:-}"
+    subcmd=""
+
+    if [[ "$first" == "--no-pager" ]]; then
+      subcmd="${2:-}"
+    else
+      subcmd="$first"
+    fi
+
+    [[ -n "$subcmd" ]] || die "git subcommand required"
+
+    case "$subcmd" in
+      status|diff|log|show) ;;
+      *) die "git subcommand '$subcmd' not allowlisted" ;;
+    esac
+    ;;
+  *)
+    # rg/grep/find: enforced by cwd check only (still useful), but not perfect.
+    :
+    ;;
+esac
+
+exec "$cmd" "$@"
